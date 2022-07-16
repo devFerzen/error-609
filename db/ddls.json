@@ -1,0 +1,202 @@
+    [
+        {
+            "_id": {
+                "$oid": "618fae05379f180d04ce536e"
+            },
+            "no_id": "1",
+            "descripcion": "Aguascalientes ",
+            "categoria": "ddlEstado"
+        },
+        {
+            "_id": {
+                "$oid": "618fae05379f180d04ce5370"
+            },
+            "no_id": "3",
+            "descripcion": "Baja California Sur ",
+            "categoria": "ddlEstado"
+        },
+        {
+            "_id": {
+                "$oid": "618fae05379f180d04ce536f"
+            },
+            "no_id": "2",
+            "descripcion": "Baja California ",
+            "categoria": "ddlEstado"
+        },
+        {
+            "_id": {
+                "$oid": "618fae05379f180d04ce5371"
+            },
+            "no_id": "4",
+            "descripcion": "Campeche ",
+            "categoria": "ddlEstado"
+        },
+        {
+            "_id": {
+                "$oid": "618fae05379f180d04ce5372"
+            },
+            "no_id": "5",
+            "descripcion": "Chiapas ",
+            "categoria": "ddlEstado"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce5398"
+            },
+            "no_id": "1",
+            "descripcion": "Aguascalientes",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce5399"
+            },
+            "no_id": "2",
+            "descripcion": "Asientos",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce539a"
+            },
+            "no_id": "3",
+            "descripcion": "Calvillo",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce539b"
+            },
+            "no_id": "4",
+            "descripcion": "Cosío",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce539c"
+            },
+            "no_id": "5",
+            "descripcion": "Jesús Maria",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb2a7379f180d04ce539c"
+            },
+            "no_id": "6",
+            "descripcion": "Abasolo",
+            "no_estado": "1",
+            "categoria": "ddlMunicipios"
+        },
+        {
+            "_id": {
+                "$oid": "618fb421379f180d04ce5d35"
+            },
+            "no_id": "1",
+            "descripcion": "Escorts",
+            "categoria": "ddlCategoriaAnuncio"
+        },
+        {
+            "_id": {
+                "$oid": "618fb421379f180d04ce5d36"
+            },
+            "no_id": "2",
+            "descripcion": "Escorts Gay",
+            "categoria": "ddlCategoriaAnuncio"
+        },
+        {
+            "_id": {
+                "$oid": "618fb421379f180d04ce5d36"
+            },
+            "no_id": "2",
+            "descripcion": "Escorts Gay",
+            "categoria": "ddlCategoriaAnuncio"
+        },
+        {
+            "_id": {
+                "$oid": "618fb421379f180d04ce5d38"
+            },
+            "no_id": "4",
+            "descripcion": "Masajes Eróticos",
+            "categoria": "ddlCategoriaAnuncio"
+        },
+        {
+            "_id": {
+                "$oid": "618fb421379f180d04ce5d39"
+            },
+            "no_id": "5",
+            "descripcion": "Gigolos",
+            "categoria": "ddlCategoriaAnuncio"
+        },
+        {
+            "_id": {
+                "$oid": "618fb47f379f180d04ce5d3a"
+            },
+            "no_id": "1",
+            "descripcion": "femenino",
+            "categoria": "ddlSexo"
+        },
+        {
+            "_id": {
+                "$oid": "618fb47f379f180d04ce5d3b"
+            },
+            "no_id": "2",
+            "descripcion": "masculino",
+            "categoria": "ddlSexo"
+        },
+        {
+            "_id": {
+                "$oid": "618faeaa379f180d04ce5393"
+            },
+            "no_id": "1",
+            "descripcion": "whatsapp",
+            "icono_icono": "whatsapp",
+            "icono_categoria": "fab",
+            "categoria": "ddlRedesSociales"
+        },
+        {
+            "_id": {
+                "$oid": "618faeaa379f180d04ce5394"
+            },
+            "no_id": "2",
+            "descripcion": "twitter",
+            "icono_icono": "twitter",
+            "icono_categoria": "fab",
+            "categoria": "ddlRedesSociales"
+        },
+        {
+            "_id": {
+                "$oid": "618faeaa379f180d04ce5395"
+            },
+            "no_id": "3",
+            "descripcion": "instagram",
+            "icono_icono": "instagram",
+            "icono_categoria": "fab",
+            "categoria": "ddlRedesSociales"
+        },
+        {
+            "_id": {
+                "$oid": "618faeaa379f180d04ce5396"
+            },
+            "no_id": "4",
+            "descripcion": "teléfono",
+            "icono_icono": "phone-alt",
+            "icono_categoria": "fa",
+            "categoria": "ddlRedesSociales"
+        },
+        {
+            "_id": {
+                "$oid": "618faeaa379f180d04ce5397"
+            },
+            "no_id": "5",
+            "descripcion": "web",
+            "icono_icono": "globe",
+            "icono_categoria": "fa",
+            "categoria": "ddlRedesSociales"
+        }
+    ]
