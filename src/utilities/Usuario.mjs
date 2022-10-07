@@ -1,5 +1,5 @@
 import { Promise } from 'mongoose'
-import CodigoVerificacion from './codigoVerificacion'
+import CodigoVerificacion from './codigoVerificacion.mjs'
 import sgMail from '@sendgrid/mail'
 
 import bcrypt from 'bcrypt'
