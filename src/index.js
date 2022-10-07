@@ -4,7 +4,7 @@ import express from "express"; //express-graphql or express
 import jwt from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
 
-import graphqlSchema from "./graphql/schema";
+import graphqlSchema from "./graphql/schema.js";
 /* AFSS - Investigación pendiente
   -> Las dependencies de arriba general un warning 61608 junto con
       graphql-tools se analizará después al corto, quizás mediano plazo
@@ -12,14 +12,14 @@ import graphqlSchema from "./graphql/schema";
 */
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import permissions from "./graphql/permisos";
+import permissions from "./graphql/permisos.js";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import cloudinary from "cloudinary";
 
-import creacionToken from "./utilities/autorizacionToken";
+import creacionToken from "./utilities/autorizacionToken.js";
 import Models from "./graphql/models";
 import serveStatic from "serve-static";
 
