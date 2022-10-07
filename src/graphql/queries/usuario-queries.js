@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 import bcrypt from "bcrypt";
-import creacionToken from "../../utilities/autorizacionToken.mjs";
+import creacionToken from "../../utilities/autorizacionToken.js";
 import { crearBitacoraCreaciones } from "../../utilities/bitacoras.mjs";
 import UsuarioClass from "../../utilities/Usuario.mjs";
 

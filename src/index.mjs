@@ -19,7 +19,7 @@ import multer from "multer";
 import path from "path";
 import cloudinary from "cloudinary";
 
-import creacionToken from "./utilities/autorizacionToken.mjs";
+import creacionToken from "./utilities/autorizacionToken.js";
 import Models from "./graphql/models/index.js";
 import serveStatic from "serve-static";
 
