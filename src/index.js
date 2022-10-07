@@ -20,7 +20,7 @@ import path from "path";
 import cloudinary from "cloudinary";
 
 import creacionToken from "./utilities/autorizacionToken.js";
-import Models from "./graphql/models";
+import Models from "./graphql/models/index.js";
 import serveStatic from "serve-static";
 
 //Conexión MongoDb
