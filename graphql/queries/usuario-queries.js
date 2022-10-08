@@ -6,7 +6,7 @@ import { crearBitacoraCreaciones } from "../../src/utilities/bitacoras.js";
 import UsuarioClass from "../../src/utilities/Usuario.js";
 
 import { GraphQLScalarType } from "graphql";
-import { Kind } from "graphql/language";
+import { Kind } from "graphql/language/index.mjs";
 
 export const typeDef = gql`
   extend type Query {
