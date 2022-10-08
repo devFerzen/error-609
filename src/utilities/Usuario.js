@@ -1,4 +1,6 @@
-import { Promise } from 'mongoose'
+import pkg from 'mongoose';
+const { Promise } = pkg;
+
 import CodigoVerificacion from './codigoVerificacion.js'
 import sgMail from '@sendgrid/mail'
 
