@@ -1,9 +1,9 @@
 import gql from "graphql-tag";
 
 import bcrypt from "bcrypt";
-import creacionToken from "../../utilities/autorizacionToken.js";
-import { crearBitacoraCreaciones } from "../../utilities/bitacoras.js";
-import UsuarioClass from "../../utilities/Usuario.js";
+import creacionToken from "../src/utilities/autorizacionToken.js";
+import { crearBitacoraCreaciones } from "../src/utilities/bitacoras.js";
+import UsuarioClass from "../src/utilities/Usuario.js";
 
 import { GraphQLScalarType } from "graphql";
 import { Kind } from "graphql/language";

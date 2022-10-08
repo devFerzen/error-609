@@ -1,12 +1,12 @@
 import gql from "graphql-tag";
 
-import QueryAnuncio from "../../utilities/queryAnuncio.js";
-import UsuarioClass from "../../utilities/Usuario.js";
+import QueryAnuncio from "../src/utilities/queryAnuncio.js";
+import UsuarioClass from "../src/utilities/Usuario.js";
 import {
   crearBitacoraCreaciones,
   crearVerificacionAnuncio,
   crearBitacoraBusquedas,
-} from "../../utilities/bitacoras.js";
+} from "../src/utilities/bitacoras.js";
 import mongoose from 'mongoose';
 import path from "path";
 import fs from "fs";
