@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose';
+import pkg from 'mongoose';
+const { Schema, model } = pkg;
 
 const CreacionSchema = new Schema({
     id_usuario: { type: String, required: true },

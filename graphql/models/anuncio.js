@@ -1,4 +1,6 @@
-import { Schema, model } from "mongoose";
+import pkg from 'mongoose';
+const { Schema, model } = pkg;
+
 //Pendiente validaciones y maximo de caracteres
 
 const contactoSchema = new Schema({
