@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-import QueryAnuncio from "../../src/utilities/queryAnuncio.js";
-import UsuarioClass from "../../src/utilities/Usuario.js";
+import QueryAnuncio from "../../utilities/queryAnuncio.js";
+import UsuarioClass from "../../utilities/Usuario.js";
 import {
   crearBitacoraCreaciones,
   crearVerificacionAnuncio,
