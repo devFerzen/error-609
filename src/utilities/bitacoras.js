@@ -1,5 +1,5 @@
 //importar moment
-import Models from '../../graphql/models/index.js';
+import Models from '../graphql/models';
 
 // crearBitacoraCreaciones: Guarda bitacora de creación de Registro, Anuncio, Inicio de Sesión
 export const crearBitacoraCreaciones = (DataBitacora, conteoEn) => {

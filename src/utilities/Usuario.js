@@ -1,6 +1,4 @@
-import pkg from 'mongoose';
-const { Promise } = pkg;
-
+import { Promise } from 'mongoose'
 import CodigoVerificacion from './codigoVerificacion.js'
 import sgMail from '@sendgrid/mail'
 
@@ -174,4 +172,4 @@ class Usuario {
 
 }
 
-export default Usuario;
+module.exports = Usuario;
