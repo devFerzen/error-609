@@ -6,7 +6,7 @@ import {
   crearBitacoraCreaciones,
   crearVerificacionAnuncio,
   crearBitacoraBusquedas,
-} from "../../src/utilities/bitacoras.js";
+} from "../../utilities/bitacoras.js";
 import mongoose from 'mongoose';
 import path from "path";
 import fs from "fs";
