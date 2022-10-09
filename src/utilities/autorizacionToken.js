@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import Models from '../../graphql/models/index.js';
 
-module.exports = (user = Models.Usuario) => {
+export default (user = Models.Usuario) => {
     const autorizacion_token = jwt.sign({ "http://localhost:3080/graphql": { id: user._id } },
         "envPassSecret", { expiresIn: '1m' },
     );
