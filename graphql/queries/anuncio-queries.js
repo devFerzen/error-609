@@ -10,7 +10,6 @@ import {
 import mongoose from'mongoose';
 import path from"path";
 import fs from"fs";
-import { promisify } from"util";
 
 export const typeDef = gql`
   extend type Query {
