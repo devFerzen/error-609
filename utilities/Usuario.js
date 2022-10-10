@@ -1,8 +1,8 @@
-const { Promise } = require('mongoose');
-const sgMail = require('@sendgrid/mail');
+import { Promise } from'mongoose';
+import sgMail from'@sendgrid/mail';
 
-const bcrypt = require('bcrypt');
-const CodigoVerificacion = require('./codigoVerificacion.js');
+import bcrypt from'bcrypt';
+import CodigoVerificacion from'./codigoVerificacion.js';
 
 class Usuario {
     constructor(Usuario) {
