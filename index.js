@@ -4,7 +4,7 @@ const express = require("express"); //express-graphql or express
 const jwt = require("jsonwebtoken");
 const jwt_decode = require("jwt-decode");
 
-const graphqlSchema = require("./graphql/schema.js");
+const {graphqlSchema} = require("./graphql/schema.js");
 /* AFSS - Investigación pendiente
   -> Las dependencies de arriba general un warning 61608 junto con
       graphql-tools se analizará después al corto, quizás mediano plazo

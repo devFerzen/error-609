@@ -39,7 +39,7 @@ const Query = `
   }
 `;
 
-export default makeExecutableSchema({
+export const graphqlSchema =  makeExecutableSchema({
     typeDefs: [Query, AnuncioQueries, GeneralQueries, PaqueteQueries, UsuarioQueries, TiposGlobalesBase, TiposGlobalesSubbase],
     resolvers: merge(AnuncioResolvers, GeneralResolvers, PaqueteResolvers, UsuarioResolvers)
 });
