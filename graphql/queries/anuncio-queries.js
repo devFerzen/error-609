@@ -1,17 +1,17 @@
-const gql = require('graphql-tag');
+import gql from'graphql-tag';
 
-const QueryAnuncio = require("../../utilities/queryAnuncio.js");
-const UsuarioClass = require("../../utilities/Usuario.js");
-const {
+import QueryAnuncio from"../../utilities/queryAnuncio.js";
+import UsuarioClass from"../../utilities/Usuario.js";
+import {
   crearBitacoraCreaciones,
   crearVerificacionAnuncio,
   crearBitacoraBusquedas,
-} = require("../../utilities/bitacoras.js");
-const mongoose = require('mongoose');
-const path = require("path");
-const fs = require("fs");
-const { promisify } = require("util");
-const unlinkAsync = promisify(fs.unlink);
+} from"../../utilities/bitacoras.js";
+import mongoose from'mongoose';
+import path from"path";
+import fs from"fs";
+import { promisify } from"util";
+import unlinkAsync from promisify(fs.unlink);
 
 export const typeDef = gql`
   extend type Query {

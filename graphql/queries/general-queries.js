@@ -3,7 +3,7 @@
  * este siempre debera de regresar su tipo de returno. (Si es un string este puede ser Json.stringify(del objeto Result del front end))
  */
 
-const gql = require('graphql-tag');
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
   extend type Query {
