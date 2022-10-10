@@ -1,28 +1,28 @@
-const { ApolloServer } = require("apollo-server-express");
-const { applyMiddleware } = require("graphql-middleware");
-const express = require("express"); //express-graphql or express
-const jwt = require("jsonwebtoken");
-const jwt_decode = require("jwt-decode");
+import { ApolloServer } from "apollo-server-express";
+import { applyMiddleware } from "graphql-middleware";
+import express from "express"; //express-graphql or express
+import jwt from "jsonwebtoken";
+import jwt_decode from "jwt-decode";
 
-const {graphqlSchema} = require("./graphql/schema.js");
+import {graphqlSchema} from "./graphql/schema.js";
 /* AFSS - Investigación pendiente
   -> Las dependencies de arriba general un warning 61608 junto con
       graphql-tools se analizará después al corto, quizás mediano plazo
       no traerá complicaciones. (express-jwt quizás es el usa este método)
 */
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-const permissions = require("./graphql/permisos.js");
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-const multer = require("multer");
-const path = require("path");
-const cloudinary = require("cloudinary");
+import permissions from "./graphql/permisos.js";
+import mongoose from "mongoose";
+import morgan from "morgan";
+import multer from "multer";
+import path from "path";
+import cloudinary from "cloudinary";
 
-const creacionToken = require("./utilities/autorizacionToken.js");
-const Models = require("./graphql/models/index.js");
-const serveStatic = require("serve-static");
+import creacionToken from "./utilities/autorizacionToken.js";
+import Models from "./graphql/models/index.js";
+import serveStatic from "serve-static";
 
 //Conexión MongoDb
 mongoose.set("debug", false);
@@ -49,7 +49,7 @@ const corsOption = {
 app.use(cors());
 
 //Http console logs
-/*morgan.token("custom", "Nuevo :method request meje de :url ...(*.*) Estatus de :status " +"Con un tiempo de :total-time[2] milliseconds...");
+/*morgan.token("custom", "Nuevo :method request meje de :url ...(*.*) Estatus de :status " +"Con un tiempo de :total-time[2] milliseconds...";
 app.use(morgan('custom'));*/
 
 app.use(cookieParser());
