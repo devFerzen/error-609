@@ -1,33 +1,33 @@
 const { makeExecutableSchema } = require('apollo-server-express');
 const { merge } = require('lodash');
 
-import {
-  typeDef as TiposGlobalesBase
-} from './queries/tipos-globales-base.js';
+const {
+  TiposGlobalesBase
+} = require('./queries/tipos-globales-base.js');
 
-import {
-  typeDef as TiposGlobalesSubbase
-} from './queries/tipos-globales-subBase.js';
+const {
+  TiposGlobalesSubbase
+} = require('./queries/tipos-globales-subBase.js');
 
-import {
-  typeDef as AnuncioQueries,
-  resolvers as AnuncioResolvers
-} from './queries/anuncio-queries.js';
+const {
+  AnuncioQueries,
+  AnuncioResolvers
+} = require('./queries/anuncio-queries.js');
 
-import {
-  typeDef as GeneralQueries,
-  resolvers as GeneralResolvers
-} from './queries/general-queries.js';
+const {
+  GeneralQueries,
+  GeneralResolvers
+} = require('./queries/general-queries.js');
 
-import {
-  typeDef as PaqueteQueries,
-  resolvers as PaqueteResolvers
-} from './queries/paquetes-queries.js';
+const {
+  PaqueteQueries,
+  PaqueteResolvers
+} = require('./queries/paquetes-queries.js');
 
-import {
-  typeDef as UsuarioQueries,
-  resolvers as UsuarioResolvers
-} from './queries/usuario-queries.js';
+const {
+  UsuarioQueries,
+  UsuarioResolvers
+} = require('./queries/usuario-queries.js');
 
 const Query = `
   type Query {
