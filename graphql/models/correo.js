@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+const mongoose = require('mongoose');
 
-const correoSchema = new Schema({
+const correoSchema = new mongoose.Schema({
     correo: { type: String, default: undefined },
     asunto: { type: String, required: true },
     mensaje: { type: String, default: undefined },
@@ -14,4 +14,4 @@ const correoSchema = new Schema({
     }
 });
 
-export default model('correo', correoSchema);
+export default mongoose.model('correo', correoSchema);
