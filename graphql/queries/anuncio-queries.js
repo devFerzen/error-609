@@ -11,7 +11,6 @@ import mongoose from'mongoose';
 import path from"path";
 import fs from"fs";
 import { promisify } from"util";
-import unlinkAsync from promisify(fs.unlink);
 
 export const typeDef = gql`
   extend type Query {
@@ -451,7 +450,7 @@ export const resolvers = {
         );
 
         //que se traiga en su lista de imagenes de aunicio la imagen y que esa actualice y elimine tmb
-        await unlinkAsync(fileLocation);
+        await fs.unlink(fileLocation);
       } catch (error) {
         console.log("imagenEliminacion... en error");
         console.dir(error);
