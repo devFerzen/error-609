@@ -1,5 +1,5 @@
 import { makeExecutableSchema } from 'apollo-server-express';
-import { merge } from 'lodash/index.js';
+const { merge } = require('lodash/index.js');
 
 import {
   typeDef as TiposGlobalesBase
