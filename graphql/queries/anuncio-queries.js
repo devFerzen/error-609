@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+const gql = require('graphql-tag');
 
 import QueryAnuncio from "../../utilities/queryAnuncio.js";
 import UsuarioClass from "../../utilities/Usuario.js";

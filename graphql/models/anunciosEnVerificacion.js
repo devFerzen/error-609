@@ -1,5 +1,4 @@
-import pkg from 'mongoose';
-const { Schema, model } = pkg;
+const { Schema, model } = require('mongoose');
 
 const anunciosEnVerificacionSchema = new Schema(
   {

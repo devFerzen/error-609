@@ -1,5 +1,5 @@
-import pkg from 'mongoose';
-const { Schema, model } = pkg;
+const { Schema, model } = require('mongoose');
+
 
 const CreacionSchema = new Schema({
     id_usuario: { type: String, required: true },

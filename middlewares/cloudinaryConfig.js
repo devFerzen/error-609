@@ -1,5 +1,5 @@
-import { config, uploader } from "cloudinary";
-import dotenv from "dotenv";
+const { config, uploader } = require("cloudinary");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const cloudinaryConfig = (req, res, next) => {

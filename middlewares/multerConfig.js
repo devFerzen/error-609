@@ -1,6 +1,6 @@
-import multer from "multer";
-import Datauri from "datauri";
-import path from "path";
+const multer = require("multer");
+const Datauri = require("datauri");
+const path = require("path");
 
 
 //Setting multer storage

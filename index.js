@@ -1,8 +1,8 @@
-import { ApolloServer } from "apollo-server-express";
-import { applyMiddleware } from "graphql-middleware";
-import express from "express"; //express-graphql or express
-import jwt from "jsonwebtoken";
-import jwt_decode from "jwt-decode";
+const { ApolloServer } = require("apollo-server-express");
+const { applyMiddleware } = require("graphql-middleware");
+const express = require("express"); //express-graphql or express
+const jwt = require("jsonwebtoken");
+const jwt_decode = require("jwt-decode");
 
 import graphqlSchema from "./graphql/schema.js";
 /* AFSS - Investigación pendiente
@@ -10,18 +10,19 @@ import graphqlSchema from "./graphql/schema.js";
       graphql-tools se analizará después al corto, quizás mediano plazo
       no traerá complicaciones. (express-jwt quizás es el usa este método)
 */
-import cors from "cors";
-import cookieParser from "cookie-parser";
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+
 import permissions from "./graphql/permisos.js";
-import mongoose from "mongoose";
-import morgan from "morgan";
-import multer from "multer";
-import path from "path";
-import cloudinary from "cloudinary";
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const multer = require("multer");
+const path = require("path");
+const cloudinary = require("cloudinary");
 
 import creacionToken from "./utilities/autorizacionToken.js";
 import Models from "./graphql/models/index.js";
-import serveStatic from "serve-static";
+const serveStatic = require("serve-static");
 
 //Conexión MongoDb
 mongoose.set("debug", false);

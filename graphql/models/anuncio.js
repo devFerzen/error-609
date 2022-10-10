@@ -1,5 +1,5 @@
-import pkg from 'mongoose';
-const { Schema, model } = pkg;
+const { Schema, model } = require('mongoose');
+
 
 //Pendiente validaciones y maximo de caracteres
 

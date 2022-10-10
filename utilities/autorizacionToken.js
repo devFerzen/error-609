@@ -1,4 +1,5 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
+
 import Models from '../graphql/models/index.js';
 
 module.exports = (user = Models.Usuario) => {

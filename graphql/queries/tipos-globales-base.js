@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+const gql = require('graphql-tag');
 
 export const typeDef = gql `
   scalar Date
