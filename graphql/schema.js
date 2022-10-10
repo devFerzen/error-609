@@ -1,4 +1,4 @@
-const { makeExecutableSchema } = require('apollo-server-express');
+import { makeExecutableSchema } from'apollo-server-express';
 const { merge } = require('lodash');
 
 const {
