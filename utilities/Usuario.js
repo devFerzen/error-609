@@ -1,4 +1,3 @@
-const { Promise } = require('mongoose');
 import sgMail from'@sendgrid/mail';
 
 import bcrypt from'bcrypt';
