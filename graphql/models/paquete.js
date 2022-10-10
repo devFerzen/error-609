@@ -1,5 +1,4 @@
-
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 const PaqueteSchema = new Schema({
   clave: { type: String, required: true },

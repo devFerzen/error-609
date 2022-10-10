@@ -1,5 +1,4 @@
-const { Schema, model } = require('mongoose');
-
+import { Schema, model } from 'mongoose';
 
 const CreacionSchema = new Schema({
     id_usuario: { type: String, required: true },

@@ -1,5 +1,4 @@
-const { Schema, model } = require('mongoose');
-
+import { Schema, model } from 'mongoose';
 
 const correoSchema = new Schema({
     correo: { type: String, default: undefined },

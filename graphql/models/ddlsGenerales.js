@@ -1,5 +1,4 @@
-const { Schema, model } = require('mongoose');
-
+import { Schema, model } from 'mongoose';
 
 const ddlsGeneralSchema = new Schema({
     no_id: { type: String, required: true },
