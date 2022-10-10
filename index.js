@@ -4,7 +4,7 @@ import express from "express"; //express-graphql or express
 import jwt from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
 
-import {graphqlSchema} from "./graphql/schema.js";
+import graphqlSchema from "./graphql/schema.js";
 /* AFSS - Investigación pendiente
   -> Las dependencies de arriba general un warning 61608 junto con
       graphql-tools se analizará después al corto, quizás mediano plazo
