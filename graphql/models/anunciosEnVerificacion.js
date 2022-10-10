@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const anunciosEnVerificacionSchema = new mongoose.Schema(
+const anunciosEnVerificacionSchema = new Schema(
   {
     id_anuncio: { type: String, required: true },
     foto_anuncio: { type: String, required: true },
@@ -15,5 +15,5 @@ const anunciosEnVerificacionSchema = new mongoose.Schema(
     }
   }
 );
-const anunciosEnVerificacion = mongoose.model('anunciosEnVerificacion', anunciosEnVerificacionSchema);
+const anunciosEnVerificacion = model('anunciosEnVerificacion', anunciosEnVerificacionSchema);
 export default anunciosEnVerificacion;

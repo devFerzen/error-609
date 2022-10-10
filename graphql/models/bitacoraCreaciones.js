@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const CreacionSchema = new mongoose.Schema({
+const CreacionSchema = new Schema({
     id_usuario: { type: String, required: true },
     estado: { type: String, required: true },
     ciudad: { type: String, required: true },
@@ -9,7 +9,7 @@ const CreacionSchema = new mongoose.Schema({
     fecha_creacion: { type: Date, default: Date.now() }
 });
 
-const bitacoraCreacionesSchema = new mongoose.Schema({
+const bitacoraCreacionesSchema = new Schema({
     fecha_bitacora: { type: Date, default: Date.now() },
     count_creacion: { type: Number, default: 0 },
     count_anuncio: { type: Number, default: 0 },
@@ -18,5 +18,5 @@ const bitacoraCreacionesSchema = new mongoose.Schema({
     Creacion: { type: [CreacionSchema], required: true, default: undefined }
 });
 
-const bitacoraCreaciones = mongoose.model('bitacoraCreaciones', bitacoraCreacionesSchema);
+const bitacoraCreaciones = model('bitacoraCreaciones', bitacoraCreacionesSchema);
 export default bitacoraCreaciones;

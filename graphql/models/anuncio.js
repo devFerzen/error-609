@@ -1,8 +1,9 @@
-import * as mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+
 
 //Pendiente validaciones y maximo de caracteres
 
-const contactoSchema = new mongoose.Schema({
+const contactoSchema = new Schema({
     _id: false,
     contacto: { type: String, required: true },
     Tipo: {
@@ -11,21 +12,21 @@ const contactoSchema = new mongoose.Schema({
     }
 });
 
-const tarifaSchema = new mongoose.Schema({
+const tarifaSchema = new Schema({
     _id: false,
     nombre: { type: String, default: undefined },
     precio: { type: Number, default: undefined },
     descripcion: { type: String, default: undefined }
 });
 
-const imagenSchema = new mongoose.Schema({
+const imagenSchema = new Schema({
     _id: false,
     nombre: { type: String, default: undefined },
     posicion: { type: Number, default: 0 },
     url: { type: String, default: undefined }
 });
 
-const anuncioSchema = new mongoose.Schema(
+const anuncioSchema = new Schema(
   {
     _id: { type: Schema.Types.ObjectId, required: true },
     categorias: { type: [String], required: true },
@@ -61,5 +62,5 @@ const anuncioSchema = new mongoose.Schema(
   }
 );
 
-const anuncio = mongoose.model('anuncio', anuncioSchema);
+const anuncio = model('anuncio', anuncioSchema);
 export default anuncio;
