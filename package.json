@@ -1,7 +1,6 @@
 {
   "name": "error-609",
   "version": "1.0.0",
-  "type": "module",
   "description": "Error sales web page.",
   "main": "index.js",
   "scripts": {
