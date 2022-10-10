@@ -3,9 +3,9 @@ const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const bcrypt = require("bcrypt");
 
-import creacionToken from "../../utilities/autorizacionToken.js";
-import { crearBitacoraCreaciones } from "../../utilities/bitacoras.js";
-import UsuarioClass from "../../utilities/Usuario.js";
+const creacionToken = require("../../utilities/autorizacionToken.js");
+const { crearBitacoraCreaciones } = require("../../utilities/bitacoras.js");
+const UsuarioClass = require("../../utilities/Usuario.js");
 
 
 

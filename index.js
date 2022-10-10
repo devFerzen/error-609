@@ -4,7 +4,7 @@ const express = require("express"); //express-graphql or express
 const jwt = require("jsonwebtoken");
 const jwt_decode = require("jwt-decode");
 
-import graphqlSchema from "./graphql/schema.js";
+const graphqlSchema = require("./graphql/schema.js");
 /* AFSS - Investigación pendiente
   -> Las dependencies de arriba general un warning 61608 junto con
       graphql-tools se analizará después al corto, quizás mediano plazo
@@ -13,15 +13,15 @@ import graphqlSchema from "./graphql/schema.js";
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-import permissions from "./graphql/permisos.js";
+const permissions = require("./graphql/permisos.js");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const multer = require("multer");
 const path = require("path");
 const cloudinary = require("cloudinary");
 
-import creacionToken from "./utilities/autorizacionToken.js";
-import Models from "./graphql/models/index.js";
+const creacionToken = require("./utilities/autorizacionToken.js");
+const Models = require("./graphql/models/index.js");
 const serveStatic = require("serve-static");
 
 //Conexión MongoDb
