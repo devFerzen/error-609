@@ -1,14 +1,10 @@
 import gql from'graphql-tag';
-
 import { GraphQLScalarType } from "graphql";
-const { Kind } = require("graphql/language");
+import Kind from"graphql/language";
 import bcrypt from "bcrypt";
-
 import creacionToken from "../../utilities/autorizacionToken.js";
 import { crearBitacoraCreaciones } from "../../utilities/bitacoras.js";
 import UsuarioClass from "../../utilities/Usuario.js";
-
-
 
 export const typeDef = gql`
   extend type Query {
