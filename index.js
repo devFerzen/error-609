@@ -25,7 +25,7 @@ import Models from "./graphql/models/index.js";
 import serveStatic from "serve-static";
 
 //For __dirname uses on ES module scopepere
-import path from 'path'
+
 import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
