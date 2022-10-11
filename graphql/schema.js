@@ -1,5 +1,5 @@
 import { makeExecutableSchema } from 'apollo-server-express';
-import { merge } from 'lodash';
+import merge from 'lodash';
 
 import {
   typeDef as TiposGlobalesBase
