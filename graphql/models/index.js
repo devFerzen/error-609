@@ -1,10 +1,10 @@
-import Usuario from './usuario.js';
-import Anuncio from './anuncio.js';
-import BitacoraCreaciones from './bitacoraCreaciones.js';
-import AnunciosEnVerificacion from './anunciosEnVerificacion.js';
-import Paquete from './paquete.js';
-import Correo from './correo.js';
-import DdlGeneral from './ddlsGenerales.js';
+import Usuario from './usuario.cjs';
+import Anuncio from './anuncio.cjs';
+import BitacoraCreaciones from './bitacoraCreaciones.cjs';
+import AnunciosEnVerificacion from './anunciosEnVerificacion.cjs';
+import Paquete from './paquete.cjs';
+import Correo from './correo.cjs';
+import DdlGeneral from './ddlsGenerales.cjs';
 
 export default {
     Usuario,
