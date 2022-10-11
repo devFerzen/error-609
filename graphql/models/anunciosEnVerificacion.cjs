@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose'
 
 const anunciosEnVerificacionSchema = new mongoose.Schema(
   {

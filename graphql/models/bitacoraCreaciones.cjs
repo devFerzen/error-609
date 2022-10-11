@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose'
 
 const CreacionSchema = new mongoose.Schema({
     id_usuario: { type: String, required: true },

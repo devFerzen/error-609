@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose'
 
 const ddlsGeneralSchema = new mongoose.Schema({
     no_id: { type: String, required: true },

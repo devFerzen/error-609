@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose'
 
 
 //Pendiente validaciones y maximo de caracteres
