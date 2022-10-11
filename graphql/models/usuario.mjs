@@ -1,8 +1,8 @@
-import * as mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 let correoRegexp = /.+\@.+\..+/;
 
-const DefaultContactoSchema = new mongoose.Schema({
+const DefaultContactoSchema = new Schema({
     _id: false,
     Tipo: {
         categoria: { type: String, default: undefined },
@@ -11,7 +11,7 @@ const DefaultContactoSchema = new mongoose.Schema({
     contacto: { type: String }
 });
 
-const usuarioSchema = new mongoose.Schema({
+const usuarioSchema = new Schema({
     usuario: { type: String, maxlength: 60, unique: true, required: true, match: correoRegexp },
     contrasena: { type: String, minlenght: 8, required: true },
     numero_telefonico: { type: Number, required: true, unique: true },
@@ -47,5 +47,5 @@ usuarioSchema.post('save', function(error, doc, next) {
 });
 
 
-const usuario = mongoose.model('usuario', usuarioSchema);
+const usuario = model('usuario', usuarioSchema);
 export default usuario;
