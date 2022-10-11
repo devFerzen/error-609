@@ -1,4 +1,4 @@
-const { and, or, rule, shield } = require("graphql-shield");
+import { and, or, rule, shield } from "graphql-shield";
 
 function checkPermission(user, permiso) {
     if (user && user["http://localhost:3080/graphql"]) {
