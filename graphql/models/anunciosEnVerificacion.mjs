@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose'
+import Schema from 'mongoose'
+import model from 'mongoose'
 
 const anunciosEnVerificacionSchema = new Schema(
   {

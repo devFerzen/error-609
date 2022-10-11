@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose'
+import Schema from 'mongoose'
+import model from 'mongoose'
 
 const ddlsGeneralSchema = new Schema({
     no_id: { type: String, required: true },
