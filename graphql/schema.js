@@ -1,5 +1,5 @@
 import { makeExecutableSchema } from 'apollo-server-express';
-import merge from 'lodash';
+import lodash from 'lodash';
 
 import {
   typeDef as TiposGlobalesBase
@@ -41,5 +41,5 @@ const Query = `
 
 export default makeExecutableSchema({
     typeDefs: [Query, AnuncioQueries, GeneralQueries, PaqueteQueries, UsuarioQueries, TiposGlobalesBase, TiposGlobalesSubbase],
-    resolvers: merge(AnuncioResolvers, GeneralResolvers, PaqueteResolvers, UsuarioResolvers)
+    resolvers: lodash.merge(AnuncioResolvers, GeneralResolvers, PaqueteResolvers, UsuarioResolvers)
 });
