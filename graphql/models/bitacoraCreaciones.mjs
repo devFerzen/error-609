@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 const CreacionSchema = new Schema({
     id_usuario: { type: String, required: true },
@@ -19,5 +19,5 @@ const bitacoraCreacionesSchema = new Schema({
     Creacion: { type: [CreacionSchema], required: true, default: undefined }
 });
 
-const bitacoraCreaciones = model('bitacoraCreaciones', bitacoraCreacionesSchema);
+const bitacoraCreaciones = mongoose.model('bitacoraCreaciones', bitacoraCreacionesSchema);
 export default bitacoraCreaciones;

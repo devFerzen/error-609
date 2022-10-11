@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 const PaqueteSchema = new Schema({
   clave: { type: String, required: true },
@@ -16,5 +16,5 @@ const PaqueteSchema = new Schema({
   estado: { type: Boolean, default: true },
 });
 
-const paquete = model('paquete', PaqueteSchema);
+const paquete = mongoose.model('paquete', PaqueteSchema);
 export default paquete;

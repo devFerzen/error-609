@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 let correoRegexp = /.+\@.+\..+/;
 
@@ -48,5 +48,5 @@ usuarioSchema.post('save', function(error, doc, next) {
 });
 
 
-const usuario = model('usuario', usuarioSchema);
+const usuario = mongoose.model('usuario', usuarioSchema);
 export default usuario;

@@ -1,6 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
-
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 //Pendiente validaciones y maximo de caracteres
 
@@ -63,5 +62,5 @@ const anuncioSchema = new Schema(
   }
 );
 
-const anuncio = model('anuncio', anuncioSchema);
+const anuncio = mongoose.model('anuncio', anuncioSchema);
 export default anuncio;

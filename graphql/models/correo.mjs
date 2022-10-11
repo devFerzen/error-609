@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 const correoSchema = new Schema({
     correo: { type: String, default: undefined },
@@ -15,4 +15,4 @@ const correoSchema = new Schema({
     }
 });
 
-export default model('correo', correoSchema);
+export default mongoose.model('correo', correoSchema);

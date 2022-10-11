@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 const ddlsGeneralSchema = new Schema({
     no_id: { type: String, required: true },
@@ -10,5 +10,5 @@ const ddlsGeneralSchema = new Schema({
     categoria: { type: String, required: true },
     no_estado: { type: String }
 });
-const ddlGeneral = model('ddlGeneral', ddlsGeneralSchema)
+const ddlGeneral = mongoose.model('ddlGeneral', ddlsGeneralSchema)
 export default ddlGeneral;

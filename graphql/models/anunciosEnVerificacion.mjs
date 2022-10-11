@@ -1,5 +1,5 @@
-import Schema from 'mongoose'
-import model from 'mongoose'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
 const anunciosEnVerificacionSchema = new Schema(
   {
@@ -16,5 +16,5 @@ const anunciosEnVerificacionSchema = new Schema(
     }
   }
 );
-const anunciosEnVerificacion = model('anunciosEnVerificacion', anunciosEnVerificacionSchema);
+const anunciosEnVerificacion = mongoose.model('anunciosEnVerificacion', anunciosEnVerificacionSchema);
 export default anunciosEnVerificacion;
