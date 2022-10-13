@@ -43,7 +43,7 @@ mongoose
 
 //Server and env Config
 const app = express();
-const port = process.env.port || 3080;
+const port = process.env.PORT || 3080;
 
 app.use(serveStatic(__dirname + "/dist"));
 
