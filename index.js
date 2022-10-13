@@ -48,7 +48,7 @@ const port = process.env.PORT || 3080;
 app.use(serveStatic(__dirname + "/dist"));
 
 const corsOption = {
-  origin: `http://localhost:${port}`,
+  origin: `/`, //`http://localhost:${port}`,
   credentials: true, //credentials true afss: investigar más la apertura de credenciales con client
   maxAge: 3600,
 };
@@ -109,8 +109,9 @@ app.use(async function (req, res, next) {
             authTokenVerify = jwt_decode(authToken, "envPassSecret");
             console.log(authTokenVerify);
 
+            //[`http://localhost:${port}/graphql`].id
             UsuarioLoggeado = await Models.Usuario.findById(
-              authTokenVerify[`http://localhost:${port}/graphql`].id
+              authTokenVerify[`/graphql`].id
             )
               .lean()
               .exec();
@@ -121,10 +122,11 @@ app.use(async function (req, res, next) {
           }
 
           //verificar si el refresh token count es igual que su bd
+          //[`http://localhost:${port}/graphql`].conteo_sesion
           if (
             !UsuarioLoggeado ||
             UsuarioLoggeado.conteo_sesion !=
-              refreshTokenVerify[`http://localhost:${port}/graphql`].conteo_sesion
+              refreshTokenVerify[`/graphql`].conteo_sesion
           ) {
             console.log(
               "no se encontro el usuario o son diferentes los conteos de sesion"
@@ -174,7 +176,7 @@ app.use(async function (req, res, next) {
   }
 
   req.user = {
-    id: authTokenVerify[`http://localhost:${port}/graphql`].id,
+    id: authTokenVerify[`/graphql`].id, //[`http://localhost:${port}/graphql`].id,
     token: authToken,
   };
 
