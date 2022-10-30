@@ -190,8 +190,8 @@ export const resolvers = {
                 message:
                   "Favor de validar tu cuenta, con el código de verificación que se le ha enviado a su correo!.",
               },
-              panelHerramientasVerificacion: true,
               setCorreo: correo,
+              panelHerramientasVerificacion: true
             },
           })
         );
@@ -207,8 +207,9 @@ export const resolvers = {
 
         //se crea un nuevo codigo de verificacion para el usuario
         if (UsuarioLoggeado.max_intentos >= 5) {
+
           let result = await Usuario.verificacionNuevoUsuario().catch((err) => {
-            console.log(err);
+            console.log(`verificacionNuevoUsuario... en error`);
             console.dir(err);
 
             return JSON.stringify({
@@ -219,6 +220,7 @@ export const resolvers = {
                 },
               },
             });
+            //Error al crear código de verificación
           });
 
           //Este envío de correo es con el template Verificación!!
@@ -252,7 +254,8 @@ export const resolvers = {
               },
             })
           );
-        } // Se paso de intentos
+        } 
+        // Se paso de intentos
 
         //Se la da un nuevo intento
         Usuario.verificacionUsuarioNuevoIntento();
@@ -268,7 +271,8 @@ export const resolvers = {
             },
           })
         );
-      } // Comparacion de contraseña fue incorrecta
+      } 
+      // Comparacion de contraseña fue incorrecta
 
       // Nueva busqueda mas limpia y se limpia los intentos y se crean los tokens
       UsuarioLoggeado = await Models.Usuario.findOne(
@@ -288,15 +292,16 @@ export const resolvers = {
         creacionToken(UsuarioLoggeado);
 
       res.cookie("auth-token", autorizacion_token, {
-        sameSite: "strict",
-        path: "/",
+        //sameSite: "strict",
+        //path: "/",
         expire: new Date(new Date().getTime() + 60 * 1000),
         httpOnly: true,
-        secure: process.env.NODE_ENV !== "development",
+        //secure: process.env.NODE_ENV !== "development",
       });
 
       res.cookie("refresh-token", actualizacion_token, {
         expire: new Date(new Date().getTime() + 6 * 1000), //60 * 60000)
+        //secure: process.env.NODE_ENV !== "development",
       });
 
       //Registro de bitacora
@@ -312,12 +317,12 @@ export const resolvers = {
       crearBitacoraCreaciones(Bitacora, "count_inicio_sesion");
 
       return JSON.stringify({
-        pagina: "dashboard",
         componenteInterno: {
-          activationAlert: { type: "success", message: "Bienvenido.!" },
-          panelHerramientasBusqueda: true,
           setSesion: UsuarioLoggeado,
+          activationAlert: { type: "success", message: "Bienvenido...!" },
+          panelHerramientasBusqueda: true,
         },
+        pagina: "dashboard",
       });
     },
 
@@ -429,12 +434,12 @@ export const resolvers = {
       });
 
       return JSON.stringify({
-        pagina: "dashboard",
         componenteInterno: {
+          setSesion: NuevoUsuarioModel,
           activationAlert: { type: "success", message: "Bienvenido!" },
           panelHerramientasBusqueda: true,
-          setSesion: NuevoUsuarioModel,
         },
+        pagina: "dashboard",
       });
     },
 
@@ -508,6 +513,7 @@ export const resolvers = {
         },
       });
     },
+
     /*
           actualizacionContrasena: Actualización de contraseña que se hace dentro de una sesion del usuario.
         */
@@ -820,12 +826,11 @@ export const resolvers = {
       });
 
       return JSON.stringify({
-        mensaje: `${result.mensaje}`,
-        pagina: "dashboard",
         componenteInterno: {
           numerotelefonicoUsuario: true,
           panelHerramientasBusqueda: true,
         },
+        pagina: "dashboard",
       });
     },
 

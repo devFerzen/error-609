@@ -20,7 +20,7 @@ export const resolvers = {
     queryddlsByCategoria: async (_, { categorias }, { Models }) => {
       let QueryResult;
       try {
-        console.log("categorias query", categorias);
+
         return await Models.DdlGeneral.find(
           { categoria: { $in: categorias } },
           {},

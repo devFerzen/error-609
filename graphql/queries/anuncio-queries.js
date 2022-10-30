@@ -58,9 +58,6 @@ export const resolvers = {
 
       try {
         QueryLimpia = Query.queryLimpiada();
-        console.log(`<<< QueryLimpia`);
-        console.dir(QueryLimpia);
-
         return await Models.Anuncio.find(QueryLimpia).exec();
       } catch (err) {
         console.log("queryAnuncios... en error"); //guardar el input
@@ -87,7 +84,6 @@ export const resolvers = {
       if (!user) {
         throw new Error(
           JSON.stringify({
-            pagina: "home",
             componenteInterno: {
               panelHerramientasInicioSesion: true,
               activationAlert: {
@@ -95,6 +91,7 @@ export const resolvers = {
                 message: `Sesión cerrada por inactividad, favor de iniciar sesión nuevamente!.`,
               },
             },
+            pagina: "home",
           })
         );
       }
@@ -111,7 +108,6 @@ export const resolvers = {
         console.dir(err);
 
         return JSON.stringify({
-          pagina: "home",
           componenteInterno: {
             cerrarSesion: "",
             panelHerramientasInicioSesion: true,
@@ -120,13 +116,13 @@ export const resolvers = {
               message: `Error inesperado, favor de validar formulario e intentar nuevamente, si el error persiste reportar el caso a servicio al cliente!.`,
             },
           },
+          pagina: "home",
         });
       }
 
       if (!ResultadoUsuario) {
         throw new Error(
           JSON.stringify({
-            pagina: "home",
             componenteInterno: {
               cerrarSesion: "",
               panelHerramientasInicioSesion: true,
@@ -135,6 +131,7 @@ export const resolvers = {
                 message: `Error inesperado favor de iniciar sesión nuevamente, si el error persiste reportar el caso a servicio al cliente!.`,
               },
             },
+            pagina: "home",
           })
         );
       } //Usuario no existe
@@ -192,7 +189,6 @@ export const resolvers = {
 
         throw new Error(
           JSON.stringify({
-            pagina: "home",
             componenteInterno: {
               panelHerramientasVerificacion: true,
               setTipoVerificacion: "verificacionCelular",
@@ -201,6 +197,7 @@ export const resolvers = {
                 message: `Favor de validar su cuenta con el código de verificación que se le ha enviado a su celular!.`,
               },
             },
+            pagina: "home",
           })
         );
       } // Numero de telefono no verificado
@@ -581,6 +578,7 @@ export const resolvers = {
     async solicitarVerificacionCelular(parent, params, { Models, user }) {
       let ResultadoUsuario, Usuario, result;
 
+      //aqui
       try {
         ResultadoUsuario = await Models.Usuario.findById(user.id, {
           max_updates: 1,
@@ -635,7 +633,6 @@ export const resolvers = {
       });
 
       return JSON.stringify({
-        pagina: "home",
         componenteInterno: {
           panelHerramientasVerificacion: true,
           setTipoVerificacion: "verificacionUsuarioCelular",
@@ -644,6 +641,7 @@ export const resolvers = {
             message: `${result.mensaje}`,
           },
         },
+        pagina: "home",
       });
     },
 

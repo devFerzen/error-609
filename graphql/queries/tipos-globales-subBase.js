@@ -21,6 +21,7 @@ export const typeDef = gql `
     ciudad: String,
     descripcion: String,
     sexo: String,
+    edad: Int
   }
 
   input SecDescripcionInput {
@@ -28,7 +29,8 @@ export const typeDef = gql `
     estado: String!,
     ciudad: String!,
     descripcion: String!,
-    sexo: String
+    sexo: String,
+    edad: Int
   }
 
   type SecContactoType {

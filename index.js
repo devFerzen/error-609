@@ -15,7 +15,6 @@ import cookieParser from "cookie-parser";
 
 import permissions from "./graphql/permisos.js";
 import mongoose from "mongoose";
-import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import cloudinary from "cloudinary";
@@ -25,10 +24,11 @@ import Models from "./graphql/models/index.js";
 import serveStatic from "serve-static";
 
 //For __dirname uses on ES module scopepere
-
-import {fileURLToPath} from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+/*
+  import { fileURLToPath } from 'url';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+*/
 
 //Conexión MongoDb
 mongoose.set("debug", false);
@@ -48,15 +48,13 @@ const port = process.env.PORT || 3080;
 app.use(serveStatic(__dirname + "/dist"));
 
 const corsOption = {
-  origin: `/`, //`http://localhost:${port}`,
+  //origin: `/`,
+  origin: `http://localhost:8080`,
   credentials: true, //credentials true afss: investigar más la apertura de credenciales con client
   maxAge: 3600,
 };
-app.use(cors());
+app.use(cors(corsOption));
 
-//Http console logs
-/*morgan.token("custom", "Nuevo :method request meje de :url ...(*.*) Estatus de :status " +"Con un tiempo de :total-time[2] milliseconds...";
-app.use(morgan('custom'));*/
 
 app.use(cookieParser());
 
@@ -64,7 +62,8 @@ app.use(cookieParser());
 app.use(async function (req, res, next) {
   let authTokenVerify, refreshTokenVerify, UsuarioLoggeado;
   let tokenAcceso = true;
-
+  
+  console.log(req.cookies);
   const authToken = req.cookies["auth-token"];
   const refreshToken = req.cookies["refresh-token"];
 
@@ -109,7 +108,6 @@ app.use(async function (req, res, next) {
             authTokenVerify = jwt_decode(authToken, "envPassSecret");
             console.log(authTokenVerify);
 
-            //[`http://localhost:${port}/graphql`].id
             UsuarioLoggeado = await Models.Usuario.findById(
               authTokenVerify[`/graphql`].id
             )
@@ -122,11 +120,10 @@ app.use(async function (req, res, next) {
           }
 
           //verificar si el refresh token count es igual que su bd
-          //[`http://localhost:${port}/graphql`].conteo_sesion
           if (
             !UsuarioLoggeado ||
             UsuarioLoggeado.conteo_sesion !=
-              refreshTokenVerify[`/graphql`].conteo_sesion
+            refreshTokenVerify[`/graphql`].conteo_sesion
           ) {
             console.log(
               "no se encontro el usuario o son diferentes los conteos de sesion"
@@ -139,23 +136,22 @@ app.use(async function (req, res, next) {
           //**** analizar bien estos pasos creo que esta re-creando los tokens en cada llamada */
           const { autorizacion_token, actualizacion_token } =
             creacionToken(UsuarioLoggeado);
-          console.log(">>> Nuevas Tokens");
 
-          /*res.cookie("auth-token", autorizacion_token, {
-                                sameSite: 'strict',
-                                path: '/',
-                                expire: new Date(new Date().getTime() + 60 * 60000),
-                                httpOnly: true
-                            });
+          res.cookie("auth-token", autorizacion_token, {
+            sameSite: 'strict',
+            path: '/',
+            expire: new Date(new Date().getTime() + 60 * 60000),
+            httpOnly: true
+          });
 
-                            res.cookie("refresh-token", actualizacion_token, {
-                                expire: new Date(new Date().getTime() + 6 * 1000) //60 * 60000)
-                            });
+          res.cookie("refresh-token", actualizacion_token, {
+            expire: new Date(new Date().getTime() + 6 * 1000) //60 * 60000)
+          });
 
-                            req.user = {
-                              id: UsuarioLoggeado._id,
-                              numero_telefonico_verificado: UsuarioLoggeado.numero_telefonico_verificado
-                            };*/
+          req.user = {
+            id: UsuarioLoggeado._id,
+            numero_telefonico_verificado: UsuarioLoggeado.numero_telefonico_verificado
+          };
         } else {
           console.log(">>> Auth verify con error");
           tokenAcceso = false;
@@ -175,8 +171,11 @@ app.use(async function (req, res, next) {
     return next();
   }
 
+  console.log(`authTokenVerify`)
+  console.dir(authTokenVerify);
+
   req.user = {
-    id: authTokenVerify[`/graphql`].id, //[`http://localhost:${port}/graphql`].id,
+    id: authTokenVerify[`/graphql`].id,
     token: authToken,
   };
 
@@ -259,6 +258,10 @@ app.post(
       return next(error);
     }
 
+    if (process.env.NODE_ENV !== 'development') {
+      res.send([req.files[0].filename]);
+    }
+
     const answer = await cloudinary.uploader
       .upload(req.files[0].path)
       .then((result) => {
@@ -301,7 +304,7 @@ app.get("/", (req, res) => {
 
 const server = new ApolloServer({
   schema: applyMiddleware(graphqlSchema),
-  graphiql: process.env.NODE_ENV === "dev" ? true : false, //http://localhost:3080/graphql
+  graphiql: process.env.NODE_ENV === "development" ? true : false, //http://localhost:3080/graphql
   context: apolloContext,
 });
 server.applyMiddleware({ app, cors: corsOption }); //overriding cors made by express https://stackoverflow.com/questions/54485239/apollo-server-express-cors-issue
