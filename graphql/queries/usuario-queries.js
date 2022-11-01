@@ -1,6 +1,6 @@
-import gql from'graphql-tag';
+import gql from 'graphql-tag';
 import { GraphQLScalarType } from "graphql";
-import Kind from"graphql/language";
+import Kind from "graphql/language";
 import bcrypt from "bcrypt";
 import creacionToken from "../../utilities/autorizacionToken.js";
 import { crearBitacoraCreaciones } from "../../utilities/bitacoras.js";
@@ -99,27 +99,33 @@ export const resolvers = {
     queryUsuario: async (_, { input }, { Models, user }) => {
       let result;
 
+      console.log(`queryUsuario... `);
+      console.dir(user);
+
       if (!user) {
         console.log("queryUsuario... en error !user");
-        throw new Error(
+        return;
+        /*throw new Error(
           JSON.stringify({
             pagina: "home",
             componenteInterno: {
-              componenteInterno: { panelHerramientasInicioSesion: true },
+              panelHerramientasInicioSesion: true,
               activationAlert: {
                 type: "error",
                 message: `Favor de iniciar Sesion primero!`,
               },
             },
           })
-        );
+        );*/
       }
 
       try {
-        return await Models.Usuario.findById(user.id)
+        result =  await Models.Usuario.findById(user.id)
           .lean()
           .populate("anuncios_usuario")
           .exec();
+          result.id = user.id;
+          return result;
       } catch (error) {
         console.log("queryUsuario... en error");
         console.dir(error);
@@ -254,7 +260,7 @@ export const resolvers = {
               },
             })
           );
-        } 
+        }
         // Se paso de intentos
 
         //Se la da un nuevo intento
@@ -264,14 +270,13 @@ export const resolvers = {
             componenteInterno: {
               activationAlert: {
                 type: "warning",
-                message: `Contraseña Incorrecta! Te restan ${
-                  5 - UsuarioLoggeado.max_intentos
-                } intentos!.`,
+                message: `Contraseña Incorrecta! Te restan ${5 - UsuarioLoggeado.max_intentos
+                  } intentos!.`,
               },
             },
           })
         );
-      } 
+      }
       // Comparacion de contraseña fue incorrecta
 
       // Nueva busqueda mas limpia y se limpia los intentos y se crean los tokens
@@ -290,6 +295,8 @@ export const resolvers = {
 
       const { autorizacion_token, actualizacion_token } =
         creacionToken(UsuarioLoggeado);
+
+      console.log(`inicioSesion - creacion cookies`);
 
       res.cookie("auth-token", autorizacion_token, {
         //sameSite: "strict",
@@ -391,6 +398,8 @@ export const resolvers = {
       console.dir(NuevoUsuario);
       const { autorizacion_token, actualizacion_token } =
         creacionToken(NuevoUsuario);
+
+      console.log(`registroUsuario - creacion cookies`);
 
       res.cookie("auth-token", autorizacion_token, {
         sameSite: "strict",
@@ -801,9 +810,8 @@ export const resolvers = {
             componenteInterno: {
               activationAlert: {
                 type: "warning",
-                message: `Código de verificación incorrecto, Te restan ${
-                  5 - ResultadoUsuario.max_updates
-                } intentos.`,
+                message: `Código de verificación incorrecto, Te restan ${5 - ResultadoUsuario.max_updates
+                  } intentos.`,
               },
             },
           })
@@ -1018,9 +1026,8 @@ export const resolvers = {
             componenteInterno: {
               activationAlert: {
                 type: "error",
-                message: `Contraseña Incorrecta! Te restan ${
-                  3 - ResultadoUsuario.max_intentos
-                } intentos!.`,
+                message: `Contraseña Incorrecta! Te restan ${3 - ResultadoUsuario.max_intentos
+                  } intentos!.`,
               },
             },
           })
@@ -1045,6 +1052,8 @@ export const resolvers = {
       //Al tener exito de verificacion este mandar a llamar la creacion de token, si esq la borra al hacer el intento de iniciar sesion
       const { autorizacion_token, actualizacion_token } =
         creacionToken(ResultadoUsuario);
+
+      console.log(`compararVerificacionUsuario - creacion cookies`);
 
       res.cookie("auth-token", autorizacion_token, {
         sameSite: "strict",

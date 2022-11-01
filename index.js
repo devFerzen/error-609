@@ -22,6 +22,7 @@ import cloudinary from "cloudinary";
 import creacionToken from "./utilities/autorizacionToken.js";
 import Models from "./graphql/models/index.js";
 import serveStatic from "serve-static";
+import { Console } from "console";
 
 //For __dirname uses on ES module scopepere
 /*
@@ -63,9 +64,10 @@ app.use(async function (req, res, next) {
   let authTokenVerify, refreshTokenVerify, UsuarioLoggeado;
   let tokenAcceso = true;
   
-  console.log(req.cookies);
   const authToken = req.cookies["auth-token"];
   const refreshToken = req.cookies["refresh-token"];
+  console.log("refresh")
+  console.dir(req.cookies);
 
   if (!authToken && !refreshToken) {
     return next();
@@ -76,12 +78,13 @@ app.use(async function (req, res, next) {
     return next(); //tampoco cuenta con token de refrescar
   }
 
+  //Validación del refresh token para la propiedad authTokenVerify
   try {
-    jwt.verify(refreshToken, "envPassSecret2", function (err, decoded) {
+    await jwt.verify(refreshToken, "envPassSecret2", function (err, decoded) {
       if (err) {
         console.log(">>> refresh esta expirado");
         tokenAcceso = false;
-        return;
+        return next();
       }
 
       refreshTokenVerify = decoded;
@@ -99,14 +102,14 @@ app.use(async function (req, res, next) {
     return next();
   }
 
+  //Validación del refresh token para la propiedad authTokenVerify
   try {
-    jwt.verify(authToken, "envPassSecret", async function (err, decoded) {
+    await jwt.verify(authToken, "envPassSecret", async function (err, decoded) {
       if (err) {
         if (err.message === "jwt expired") {
           try {
             //usar lo contrario de verify
             authTokenVerify = jwt_decode(authToken, "envPassSecret");
-            console.log(authTokenVerify);
 
             UsuarioLoggeado = await Models.Usuario.findById(
               authTokenVerify[`/graphql`].id
@@ -123,7 +126,7 @@ app.use(async function (req, res, next) {
           if (
             !UsuarioLoggeado ||
             UsuarioLoggeado.conteo_sesion !=
-            refreshTokenVerify[`/graphql`].conteo_sesion
+            refreshTokenVerify[`/graphql`]['conteo_sesion']
           ) {
             console.log(
               "no se encontro el usuario o son diferentes los conteos de sesion"
@@ -137,21 +140,26 @@ app.use(async function (req, res, next) {
           const { autorizacion_token, actualizacion_token } =
             creacionToken(UsuarioLoggeado);
 
-          res.cookie("auth-token", autorizacion_token, {
-            sameSite: 'strict',
-            path: '/',
+            req.user = {
+              id: UsuarioLoggeado._id.toString(), //Convertir este a un id
+              numero_telefonico_verificado: UsuarioLoggeado.numero_telefonico_verificado,
+              token: authToken,
+            };
+          
+          console.log(`Silent Refresh - creacion cookies`);
+          //quizas borrar y volver a crear
+          /*res.cookie("auth-token", autorizacion_token, {
+            //sameSite: 'strict',
+            //path: '/',
             expire: new Date(new Date().getTime() + 60 * 60000),
-            httpOnly: true
+            //httpOnly: true
           });
 
           res.cookie("refresh-token", actualizacion_token, {
             expire: new Date(new Date().getTime() + 6 * 1000) //60 * 60000)
-          });
+          });*/
 
-          req.user = {
-            id: UsuarioLoggeado._id,
-            numero_telefonico_verificado: UsuarioLoggeado.numero_telefonico_verificado
-          };
+          
         } else {
           console.log(">>> Auth verify con error");
           tokenAcceso = false;
@@ -171,14 +179,11 @@ app.use(async function (req, res, next) {
     return next();
   }
 
-  console.log(`authTokenVerify`)
-  console.dir(authTokenVerify);
-
+/*
   req.user = {
     id: authTokenVerify[`/graphql`].id,
-    token: authToken,
-  };
-
+  };*/
+  console.dir(req.user)
   return next();
 });
 
