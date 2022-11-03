@@ -66,8 +66,6 @@ app.use(async function (req, res, next) {
   
   const authToken = req.cookies["auth-token"];
   const refreshToken = req.cookies["refresh-token"];
-  console.log("refresh")
-  console.dir(req.cookies);
 
   if (!authToken && !refreshToken) {
     return next();
@@ -84,7 +82,7 @@ app.use(async function (req, res, next) {
       if (err) {
         console.log(">>> refresh esta expirado");
         tokenAcceso = false;
-        return next();
+        return;
       }
 
       refreshTokenVerify = decoded;
@@ -93,7 +91,7 @@ app.use(async function (req, res, next) {
     console.log("error en el verify token refreshData");
     console.dir(error);
     //Este debe de eliminar todo token existente para obligar volver a inicar sesion
-    return next();
+    return;
   }
 
   if (!tokenAcceso) {
@@ -147,22 +145,28 @@ app.use(async function (req, res, next) {
             };
           
           console.log(`Silent Refresh - creacion cookies`);
-          //quizas borrar y volver a crear
-          /*res.cookie("auth-token", autorizacion_token, {
+          res.clearCookie("refresh-token");
+          res.clearCookie("auth-token");
+
+          //analizar borrar y volver a crear
+          res.cookie("auth-token", autorizacion_token, {
             //sameSite: 'strict',
             //path: '/',
             expire: new Date(new Date().getTime() + 60 * 60000),
-            //httpOnly: true
+            httpOnly: true
           });
 
           res.cookie("refresh-token", actualizacion_token, {
             expire: new Date(new Date().getTime() + 6 * 1000) //60 * 60000)
-          });*/
+          });
 
-          
+          console.log("req");
+          console.dir(req.user);
+
+          tokenAcceso = false;
         } else {
           console.log(">>> Auth verify con error");
-          tokenAcceso = false;
+          tokenAcceso = false; 
         }
       }
 
@@ -179,10 +183,12 @@ app.use(async function (req, res, next) {
     return next();
   }
 
-/*
+
+  console.log("Token que ya esta");
+  console.dir(authTokenVerify);
   req.user = {
     id: authTokenVerify[`/graphql`].id,
-  };*/
+  };
   console.dir(req.user)
   return next();
 });

@@ -104,8 +104,7 @@ export const resolvers = {
 
       if (!user) {
         console.log("queryUsuario... en error !user");
-        return;
-        /*throw new Error(
+        throw new Error(
           JSON.stringify({
             pagina: "home",
             componenteInterno: {
@@ -116,7 +115,7 @@ export const resolvers = {
               },
             },
           })
-        );*/
+        );
       }
 
       try {
