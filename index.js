@@ -25,11 +25,11 @@ import serveStatic from "serve-static";
 import { Console } from "console";
 
 //For __dirname uses on ES module scopepere
-/*
+
   import { fileURLToPath } from 'url';
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-*/
+
 
 //Conexión MongoDb
 mongoose.set("debug", false);
