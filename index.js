@@ -47,8 +47,8 @@ const port = process.env.PORT || 3080;
 app.use(serveStatic(__dirname + "/dist"));
 
 const corsOption = {
-  //origin: `/`,
-  origin: `http://localhost:8080`,
+  origin: `/`,
+  //origin: `http://localhost:8080`,
   credentials: true, //credentials true afss: investigar más la apertura de credenciales con client
   maxAge: 3600,
 };
