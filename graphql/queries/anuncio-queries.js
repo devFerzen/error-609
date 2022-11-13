@@ -14,7 +14,7 @@ import fs from"fs";
 export const typeDef = gql`
   extend type Query {
     queryAnunciosById(ids: [String]): [AnuncioType]
-    queryAnuncios(query: QueryAnuncioInput!): [AnuncioType]
+    queryAnuncios(query: QueryAnuncioInput!, limit: Int, skip: Int): [AnuncioType]
   }
   extend type Mutation {
     anuncioCreacion(input: AnuncioNewInput!): String!
@@ -52,13 +52,13 @@ export const resolvers = {
       }
     },
     // Falta agregarle la projection, para solo traer especificamente esos datos
-    queryAnuncios: async (_, { query }, { Models }) => {
+    queryAnuncios: async (_, { query, limit = 6, skip = 0 }, { Models }) => {
       const Query = new QueryAnuncio(query);
       let QueryLimpia = {};
 
       try {
         QueryLimpia = Query.queryLimpiada();
-        return await Models.Anuncio.find(QueryLimpia).exec();
+        return await Models.Anuncio.find(QueryLimpia).skip(skip).limit(limit).exec();
       } catch (err) {
         console.log("queryAnuncios... en error"); //guardar el input
         console.dir(error);
