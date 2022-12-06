@@ -25,12 +25,12 @@ import serveStatic from "serve-static";
 import { Console } from "console";
 
 //For __dirname uses on ES module scopepere
-
+/*
 
 import { fileURLToPath } from 'url';
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-
+*/
 //Conexión MongoDb
 mongoose.set("debug", false);
 mongoose
@@ -49,8 +49,8 @@ const port = process.env.PORT || 3080;
 app.use(serveStatic(__dirname + "/dist"));
 
 const corsOption = {
-  //origin: `http://localhost:8080`, // `/` ,
-  origin: `/` ,
+  origin: `http://localhost:8080`,
+  //origin: `/` ,
   credentials: true, //credentials true afss: investigar más la apertura de credenciales con client
   maxAge: 3600,
 };

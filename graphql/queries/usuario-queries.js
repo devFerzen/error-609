@@ -207,13 +207,15 @@ export const resolvers = {
         UsuarioLoggeado.contrasena
       );
 
+      // Comparacion de contraseña fue incorrecta
       if (!comparacionContrasenas) {
         Usuario = new UsuarioClass(UsuarioLoggeado);
 
         //se crea un nuevo codigo de verificacion para el usuario
         if (UsuarioLoggeado.max_intentos >= 5) {
 
-          let result = await Usuario.verificacionNuevoUsuario().catch((err) => {
+          let result = await Usuario.verificacionNuevoUsuario()
+          .catch((err) => {
             console.log(`verificacionNuevoUsuario... en error`);
             console.dir(err);
 
@@ -225,7 +227,6 @@ export const resolvers = {
                 },
               },
             });
-            //Error al crear código de verificación
           });
 
           //Este envío de correo es con el template Verificación!!
@@ -276,7 +277,6 @@ export const resolvers = {
           })
         );
       }
-      // Comparacion de contraseña fue incorrecta
 
       // Nueva busqueda mas limpia y se limpia los intentos y se crean los tokens
       UsuarioLoggeado = await Models.Usuario.findOne(
@@ -292,8 +292,7 @@ export const resolvers = {
         .lean()
         .exec();
 
-      const { autorizacion_token, actualizacion_token } =
-        creacionToken(UsuarioLoggeado);
+      const { autorizacion_token, actualizacion_token } = creacionToken(UsuarioLoggeado);
 
       console.log(`inicioSesion - creacion cookies`);
 
